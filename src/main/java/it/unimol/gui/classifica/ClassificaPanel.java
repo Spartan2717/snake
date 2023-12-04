@@ -12,11 +12,12 @@ public class ClassificaPanel extends JPanel {
     private static final String FILENAMECN = "classificaNormale.bin";
     private static final String FILENAMECD = "classificaDifficile.bin";
     private Boolean difficile;
-    private Map classificaNormale, classificaDifficile;
+    public Map classificaNormale;
+	private Map classificaDifficile;
     private int appleEaten;
-    private JTextField usernameTextField;
+    public JTextField usernameTextField;
     private JButton classificatiButton;
-    private JDialog classificaDialog;
+    public JDialog classificaDialog;
 
     public ClassificaPanel( ClassificaDialog classificaDialog, Boolean difficile, Map classificaNormale, Map classificaDifficile, int appleEaten) {
         this.classificaDialog = classificaDialog;
@@ -40,7 +41,7 @@ public class ClassificaPanel extends JPanel {
 
     }
 
-    private void handleInserisciGiocatoreClick() {
+    public void handleInserisciGiocatoreClick() {
 
         String username = usernameTextField.getText();
 
