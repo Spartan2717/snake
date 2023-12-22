@@ -32,5 +32,16 @@ jobs:
       
     - name: Run Checkstyle
       run: mvn checkstyle:checkstyle
+      
+    - name: Build Docker Image
+      run: docker build -t snake .
 
+    - name: Push Docker Image to Docker Hub
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        docker push snake
+
+        - name: Run Docker Container
+        run: docker run -d -p 8080:8080 --name snake-container snake
   
